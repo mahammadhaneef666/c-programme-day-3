@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+// Function to check whether a number is prime or not
+int isPrime(int num) {
+    int i;
+    for(i = 2; i <= num/2; i++) {
+        if(num % i == 0) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+int main() {
+    int num, i, flag = 0;
+    printf("Enter a positive integer: ");
+    scanf("%d", &num);
+    printf("%d = ", num);
+    for(i = 2; i <= num/2; i++) {
+        if(isPrime(i)) {
+            if(isPrime(num - i)) {
+                printf("%d + %d\n", i, num-i);
+                flag = 1;
+            }
+        }
+    }
+    if(flag == 0) {
+        printf("Cannot be expressed as the sum of two prime numbers.\n");
+    }
+    return 0;
+}
